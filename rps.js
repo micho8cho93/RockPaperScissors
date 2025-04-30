@@ -1,154 +1,143 @@
-/* Rock, Paper, Scissors */
+// global variables and event listeners
+    const playerScore = document.getElementById('playerScore');
+    const computerScore = document.getElementById('computerScore');
+    const roundScore = document.getElementById('roundResult');
 
-/* Create function for computer choice
-Get random integer from 0-2, 0=rock, 1=paper, 2=scissors */
+    let human = 0;
+    let computer = 0;
+
+    const rockBtn = document.getElementById('rock');
+    const paperBtn = document.getElementById('paper');
+    const scissorsBtn = document.getElementById('scissors');
+
+    rockBtn.addEventListener("click", () => handlePlayerChoice('rock'));
+    paperBtn.addEventListener("click", () => handlePlayerChoice('paper'));
+    scissorsBtn.addEventListener("click", () => handlePlayerChoice('scissors'));
+
+// Create function for computer choice
 function getComputerChoice() {
-    computer = Math.floor(Math.random() * 3);
+    choice = Math.floor(Math.random() * 3);
 
-    if (computer === 0) {
-        return 'Rock';
+    if (choice === 0) {
+        return 'rock';
     }
-    else if (computer === 1) {
-        return 'Paper';
+    else if (choice === 1) {
+        return 'paper';
     }
-    else if (computer === 2) {
-        return 'Scissors';
+    else if (choice === 2) {
+        return 'scissors';
     } else {
-        console.log("Error#1");
+        alert("Error#1");
     }
 }
 
-console.log(getComputerChoice())
+// Create function to keep track of score
+function handlePlayerChoice(playerChoice){
+    const computerChoice = getComputerChoice();
 
-/* Create function for human choice*/
-
-function getHumanChoice() {
-    // find buttons div that contains rock, paper, scissors buttons
-    let buttons = document.querySelector('#buttons');
-
-    // event listener triggered by click
-    // use switch case to change return value based on the button that is clicked
-    buttons.addEventListener('click', (event) => {
-    let target = event.target;
-
-    switch(target.id) {
+    let result;
+    switch(playerChoice){
         case 'rock':
-            return 'rock';
+            switch(computerChoice) {
+                case 'rock': result = 'tie'; break;
+                case 'paper': result = 'computer'; break;
+                case 'scissors': result = 'player'; break;
+            }
             break;
         case 'paper':
-            return 'paper';
+            switch(computerChoice) {
+                case 'rock': result = 'player'; break;
+                case 'paper': result = 'tie'; break;
+                case 'scissors': result = 'computer'; break;
+            }
             break;
         case 'scissors':
-            return 'scissors';
+            switch(computerChoice) {
+                case 'rock': result = 'computer'; break;
+                case 'paper': result = 'player'; break;
+                case 'scissors': result = 'tie'; break;
+            }
             break;
     }
-});
+    handleResult(playerChoice, computerChoice);
+    updateGameState(result);
 }
 
+// Create function to update game state
+function updateGameState(result) {
 
-
-/* Create function to keep track of score */
-function getScore(humanChoice, computerChoice){
-
-    if (humanChoice === 'rock' && computerChoice === 'Paper') {
-        alert("Computer wins");
-        return "computer"
-    }
-    else if (humanChoice === 'rock' && computerChoice === 'Scissors') {
-        alert("Player wins");
-        return "player"
-    }
-    else if (humanChoice === 'rock' && computerChoice === 'Rock') {
-        alert("Tie! Nobody earns points");
-        return "tie";
-    }
-    else if (humanChoice === 'paper' && computerChoice === 'Scissors') {
-        alert("Computer wins");
-        return "computer"
-    }
-    else if (humanChoice === 'paper' && computerChoice === 'Rock') {
-        alert("Player wins");
-        return "player"
-    }
-    else if (humanChoice === 'paper' && computerChoice === 'Paper') {
-        alert("Tie! Nobody earns points");
-        return "tie";
-    }
-    else if (humanChoice === 'scissors' && computerChoice === 'Paper') {
-        alert("Player wins");
-        return "player"
-    }
-    else if (humanChoice === 'scissors' && computerChoice === 'Rock') {
-        alert("Computer wins");
-        return "computer"
-    }
-    else if (humanChoice === 'scissors' && computerChoice === 'Scissors') {
-        alert("Tie! Nobody earns points");
-        return "tie";
-    }
-    else {
-        alert("error: check getScore function in js script");
-    }
-}
-
-/* Create function to play a single round */
-function playRound() {
+    playerScore.innerText = human;
+    computerScore.innerText = computer;
     
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-
-    let result = getScore(humanChoice, computerChoice);
-    return result
-
-}
-
-
-/* Create function to play the whole game */
-// First to 5 wins, prompt user to play again after game finishes
-
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    while (humanScore < 5 && computerScore < 5) {
-        let roundResult = playRound()
-
-        if (roundResult === 'computer') {
-            computerScore++;
-        }
-        else if (roundResult === 'player') {
-            humanScore++;
-        }
-        else if (roundResult === 'tie') {
-        }
-        alert(`Player Score: ${humanScore} | Computer Score: ${computerScore}`);
+    if (result == 'player') {
+        human++;
+    }
+    else if (result == 'computer') {
+        computer++;
+    }
+    else if (result == 'tie'){
     }
 
     // print winner when score reaches 5
-    if (humanScore == 5) {
-        let replay = prompt("Player wins, congratulations! Do you want to play again? (yes/no)")
-        if (replay === 'Yes' || replay === 'yes' || replay === 'y' || replay === 'Y') {
-            playGame()
+    if (human == 5) {
+        let replay = confirm("Player wins, congratulations! Do you want to play again?")
+        if (replay == true) {
+            human = 0;
+            computer = 0;
+            return True
         }
-        else if (replay === 'No' || replay === 'no' || replay === 'n' || replay === 'N') {
-            alert('Thanks for playing, click refresh to play again')
+        else if (replay == false) {
+            alert('Thanks for playing, click refresh to play again');
+            return false;
         }
 
     }
-    else if (computerScore == 5) {
+    else if (computer == 5) {
         let replay = prompt("Computer wins, sorry. Do you want to play again? (yes/no)")
-        if (replay === 'Yes' || replay === 'yes' || replay === 'y' || replay === 'Y') {
-            playGame()
+        if (replay == true) {
+            human = 0;
+            computer = 0;
+            return true;
         }
-        else if (replay === 'No' || replay === 'no' || replay === 'n' || replay === 'N') {
-            alert('Thanks for playing, click refresh to play again')
+        else if (replay == false) {
+            alert('Thanks for playing, click refresh to play again');
+            return false;
         }
     }
-
-    // create introduction explanation about game + rules
-
-    
 }
 
-playGame();
 
+// Create function to keep track of score
+function handleResult(playerChoice, computerChoice){
+
+    let result;
+    switch(playerChoice){
+        case 'rock':
+            switch(computerChoice) {
+                case 'rock': result = 'Rock ties rock'; break;
+                case 'paper': result = 'Paper beats rock'; break;
+                case 'scissors': result = 'Rock beats scissors'; break;
+            }
+            break;
+        case 'paper':
+            switch(computerChoice) {
+                case 'rock': result = 'Paper beats rock'; break;
+                case 'paper': result = 'Paper ties paper'; break;
+                case 'scissors': result = 'Scissors beats paper'; break;
+            }
+            break;
+        case 'scissors':
+            switch(computerChoice) {
+                case 'rock': result = 'Rock beats scissors'; break;
+                case 'paper': result = 'Scissors beats paper'; break;
+                case 'scissors': result = 'Scissors ties scissors'; break;
+            }
+            break;
+    }
+    updateResultState(result);
+}
+
+// Create function to update game state
+function updateResultState(result) {
+    roundScore.innerText = result;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add script file!!!-->
-    <script src="" defer></script>
+    <script src="rps.js" defer></script>
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
@@ -24,15 +24,17 @@
     </section>
     <section id="score">
         <h2>Score</h2>
-        <h3>Player: </h3>
+        <h3>Player: <span id="playerScore">0</span></h3>
         <h3>vs</h3>
-        <h3>Computer: </h3>
+        <h3>Computer: <span id="computerScore">0</span></h3>
+        <div>
+            <p>Result: <span id="roundResult"></span></p>
+        </div>
     </section>
     <section id="buttons">
         <button id="rock">Rock</button>
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
-    </section>
-    
+    </section>    
 </body>
 </html>
