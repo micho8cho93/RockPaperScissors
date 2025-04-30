@@ -65,9 +65,6 @@ function handlePlayerChoice(playerChoice){
 
 // Create function to update game state
 function updateGameState(result) {
-
-    playerScore.innerText = human;
-    computerScore.innerText = computer;
     
     if (result == 'player') {
         human++;
@@ -75,8 +72,9 @@ function updateGameState(result) {
     else if (result == 'computer') {
         computer++;
     }
-    else if (result == 'tie'){
-    }
+
+    playerScore.innerText = human;
+    computerScore.innerText = computer;
 
     // print winner when score reaches 5
     if (human == 5) {
@@ -84,7 +82,11 @@ function updateGameState(result) {
         if (replay == true) {
             human = 0;
             computer = 0;
-            return True
+            round = "";
+            playerScore.innerText = human;
+            computerScore.innerText = computer;
+            roundScore.innerText = round;
+            return true
         }
         else if (replay == false) {
             alert('Thanks for playing, click refresh to play again');
@@ -93,10 +95,14 @@ function updateGameState(result) {
 
     }
     else if (computer == 5) {
-        let replay = prompt("Computer wins, sorry. Do you want to play again? (yes/no)")
+        let replay = confirm("Computer wins, sorry. Do you want to play again?")
         if (replay == true) {
             human = 0;
             computer = 0;
+            round = "";
+            playerScore.innerText = human;
+            computerScore.innerText = computer;
+            roundScore.innerText = round;
             return true;
         }
         else if (replay == false) {
