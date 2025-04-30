@@ -23,19 +23,23 @@ console.log(getComputerChoice())
 /* Create function for human choice*/
 
 function getHumanChoice() {
-    option = prompt("Rock, Paper or Scissors?")
-    
-    if (option === 'Rock' || option === 'rock') {
-        return 'rock';
+    let buttons = document.querySelector('#buttons');
+
+    buttons.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case 'rock':
+            return 'rock';
+            break;
+        case 'paper':
+            return 'paper';
+            break;
+        case 'scissors':
+            return 'scissors';
+            break;
     }
-    else if (option === 'Paper' || option === 'paper') {
-        return 'paper';
-    }
-    else if (option === 'Scissors' || option === 'scissors') {
-        return 'scissors';
-    } else {
-        console.log('Error#2')
-    }
+});
 }
 
 
@@ -80,7 +84,7 @@ function getScore(humanChoice, computerChoice){
         return "tie";
     }
     else {
-        getHumanChoice();
+        alert("error: check getScore function in js script");
     }
 }
 

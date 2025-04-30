@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add script file!!!-->
+    <script src="" defer></script>
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
     <h1>Rock Paper Scissors Game</h1>
-    <p>Open the console (F12 or right-click > Inspect > Console) to see the game in action!</p>
+    <section id="instructions">
+        <h3>How to play:</h3>
+            <p>To start playing, simply click on one of the buttons below. <br>
+                You'll be playing against the computer and the first to 5 points wins. <br>
+                No points awarded for ties. <br>
+                Good luck, you're gonna need it!
+            </p>
+        <h3>Combinations:</h3>
+            <p>1. Rock beats Scissors <br>
+                2. Scissors beats Paper <br>
+                3. Paper beats Rock
+            </p>
+    </section>
+    <section id="score">
+        <h2>Score</h2>
+        <h3>Player: </h3>
+        <h3>vs</h3>
+        <h3>Computer: </h3>
+    </section>
+    <section id="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </section>
     
-    <!-- Script tag at the end of body for better performance -->
-    <script src="rps.js"></script>
 </body>
 </html>
