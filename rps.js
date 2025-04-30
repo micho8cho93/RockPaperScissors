@@ -23,8 +23,11 @@ console.log(getComputerChoice())
 /* Create function for human choice*/
 
 function getHumanChoice() {
+    // find buttons div that contains rock, paper, scissors buttons
     let buttons = document.querySelector('#buttons');
 
+    // event listener triggered by click
+    // use switch case to change return value based on the button that is clicked
     buttons.addEventListener('click', (event) => {
     let target = event.target;
 
