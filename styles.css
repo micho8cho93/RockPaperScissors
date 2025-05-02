@@ -1,0 +1,221 @@
+@import 'node_modules/bulma/css/bulma.min.css';
+
+:root {
+    --primary-color: #00d1b2;
+    --background-color: #ffffff;
+    --text-color: #00d1b2;
+    --box-bg-color: #ffffff;
+    --primary-text-color: #ffffff;
+}
+
+.darkMode {
+    --primary-color: #7957d5;
+    --background-color: #1a1a1a;
+    --text-color: #7957d5;
+    --box-bg-color: #ffffff;
+    --primary-text-color: #ffffff;
+}
+
+html body {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 2vh;
+}
+
+.toggleBtn {
+    max-width: 5.5vw;
+    max-height: 5.5vh;
+    border-radius: 100%;
+}
+
+.title.box {
+    min-width: 6vw;
+    min-height: 5vw;
+    font-size: 1rem;
+    text-align: left;
+    padding: 0.4vw;
+    background-color: var(--primary-color) !important;
+    color: var(--primary-text-color) !important;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 2vw;
+}
+
+.score {
+    text-align: center;
+    font-size: 2rem;
+    min-height: 25vh;
+    padding-left: 18vw;
+    padding-right: 22vw;
+    margin-left: 3vw;
+}
+
+/* Ensure the score box background matches the primary color */
+.score.has-background-primary.box {
+    background-color: var(--primary-color) !important;
+    color: var(--primary-text-color) !important;
+}
+
+/* Override for Bulma classes */
+.has-background-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.has-text-primary {
+    color: var(--primary-color) !important;
+}
+
+.has-text-primary-100 {
+    color: var(--primary-text-color) !important;
+}
+
+.playervs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 2.5rem;
+    gap: 5vw;
+    margin-left: 4vw;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.button {
+    min-width: 5vw;
+    min-height: 5vh;
+    font-size: 2.5rem;
+    border-radius: 100%;
+    border: 2px solid white !important;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+}
+
+.roundResult {
+    font-size: 1.3rem;
+    min-width: 15vw;
+}
+
+.box {
+    border: 2px solid white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    background-color: var(--box-bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Exception for elements that should have primary color background */
+.score.box, .title.box, .howtoplay.box, .combinations.box, #dark-mode.box {
+    background-color: var(--primary-color) !important;
+    color: var(--primary-text-color) !important;
+}
+
+.scoreUnit {
+    max-width: 20vw;
+    max-height: 20vh;
+}
+
+.has-background-primary-100 {
+    background-color: var(--box-bg-color) !important;
+}
+
+h2 {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+h3 {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.howtoplay, .combinations {
+    max-width: 35vw;
+    max-height: 25vh;
+    background-color: var(--primary-color) !important;
+    color: var(--primary-text-color) !important;
+    font-size: 1.2rem;
+}
+
+#dark-mode {
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: var(--primary-color) !important;
+    color: var(--primary-text-color) !important;
+}
+
+/* Modal styles */
+.howto-section, .combo-section {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    width: 400px;
+}
+
+.howto-section h3, .combo-section h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.howto-section p, .combo-section p {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.howto-close, .combo-close {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.howto-close:hover, .combo-close:hover {
+    opacity: 0.9;
+}
+
+#dark-mode {
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: var(--primary-color) !important;
+    color: var(--primary-text-color) !important;
+}

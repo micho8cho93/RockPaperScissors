@@ -5,36 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add script file!!!-->
     <script src="rps.js" defer></script>
-    <title>Rock Paper Scissors Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Rock Paper Scissors</title>
 </head>
-<body>
-    <h1>Rock Paper Scissors Game</h1>
-    <section id="instructions">
-        <h3>How to play:</h3>
-            <p>To start playing, simply click on one of the buttons below. <br>
-                You'll be playing against the computer and the first to 5 points wins. <br>
-                No points awarded for ties. <br>
-                Good luck, you're gonna need it!
-            </p>
-        <h3>Combinations:</h3>
-            <p>1. Rock beats Scissors <br>
-                2. Scissors beats Paper <br>
-                3. Paper beats Rock
-            </p>
+<body class="has-background-primary">
+    <section class="top">
+        <h1 class="title has-background-primary box">Rock<br>Paper<br>Scissors</h1>
+        <div class="toggleBtn bx bx-moon has-background-primary has-text-primary-100 box" id="dark-mode"></div>
     </section>
-    <section id="score">
-        <h2>Score</h2>
-        <h3>Player: <span id="playerScore">0</span></h3>
-        <h3>vs</h3>
-        <h3>Computer: <span id="computerScore">0</span></h3>
-        <div>
-            <p>Result: <span id="roundResult"></span></p>
+    <section class="score" id="score">
+        <div class="score has-background-primary box">
+            
+            <div class="playervs">
+                <h4 class="scoreUnit box has-background-primary-100 has-text-primary">Player<br><span id="playerScore">0</span></h3>
+                <h3> vs </h3>
+                <h4 class="scoreUnit box has-background-primary-100 has-text-primary">Computer<br><span id="computerScore">0</span></h3>
+            </div>
+            <p class="roundResult"><span id="roundResult"></span></p>
         </div>
     </section>
-    <section id="buttons">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
-    </section>    
+    <section class="buttons" id="buttons">
+        <button class="button is-warning" id="rock">🪨</button>
+        <button class="button is-danger" id="paper">🧻</button>
+        <button class="button is-info" id="scissors">✂️</button>
+    </section>
+    <section class="instructions">
+        <button class="howtoplay box has-text-primary-100">How to play</button>
+        <div class="howto-section has-background-primary-100" id="howto-section">
+            <h3>How to play:</h3>
+                <p>To start playing, simply click on one of the buttons below. <br>
+                    You'll be playing against the computer and the first to 5 points wins. <br>
+                    No points awarded for ties. <br>
+                    Good luck, you're gonna need it!
+                </p>
+            <button class="howto-close" id="howto-close">Ok</button>
+        </div>
+            
+        <button class="combinations box has-text-primary-100">Combinations</button>
+        <div class="combo-section has-background-primary-100" id="combo-section">
+            <h3>Combinations:</h3>
+                <p>1. Rock beats Scissors <br>
+                    2. Scissors beats Paper <br>
+                    3. Paper beats Rock
+                </p>
+                <button class="combo-close" id="combo-close">Ok</button>
+        </div>
+    </section>
 </body>
 </html>

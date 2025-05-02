@@ -1,0 +1,23 @@
+{
+  "name": "rockpaperscissors",
+  "version": "1.0.0",
+  "main": "rps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micho8cho93/RockPaperScissors.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micho8cho93/RockPaperScissors/issues"
+  },
+  "homepage": "https://github.com/micho8cho93/RockPaperScissors#readme",
+  "description": "",
+  "dependencies": {
+    "bulma": "^1.0.4"
+  }
+}
